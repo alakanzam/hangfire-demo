@@ -22,7 +22,7 @@ namespace HangfireWeb
         {
             services.AddHangfire(x =>
                 x.UseSqlServerStorage(Configuration.GetConnectionString(SqlConnectionNameConstants.Hangfire)));
-
+            
             //services.AddHangfireServer();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

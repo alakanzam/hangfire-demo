@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text;
 using System.Threading.Tasks;
 using HangfireShared.Services.Interfaces;
 
@@ -17,6 +16,7 @@ namespace HangfireConsole.Services.Implementations
         {
             var base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
             Console.WriteLine(base64String);
+            
             return Task.FromResult(base64String);
         }
     }

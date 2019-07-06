@@ -42,7 +42,8 @@ namespace HangfireWeb.Controllers
             {
                 model.Template.CopyTo(memoryStream);
                 var binaries = memoryStream.ToArray();
-                _backgroundJobClient.Enqueue((IUserService userService) => userService.ImportUserAsync(binaries));
+                var jobId = _backgroundJobClient.Enqueue((IUserService userService) => userService.ImportUserAsync(binaries));
+                _backgroundJobClient.ContinueJobWith(jobId, () =>  Console.WriteLine("Job done"));
             }
 
             return Ok();
